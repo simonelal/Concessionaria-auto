@@ -10,7 +10,7 @@ L'utente può configurare un'auto scegliendo il tipo, aggiungere optional singol
 
 ```bash
 # Compilare ed eseguire i test
-mvn clean verify
+mvn clean verifygit 
 
 # Avviare l'applicazione
 mvn exec:java
