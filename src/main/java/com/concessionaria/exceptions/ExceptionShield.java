@@ -11,14 +11,19 @@ public class ExceptionShield {
 
     private ExceptionShield() {}
 
-    public static void runSafely(Runnable action) {
+    @FunctionalInterface
+    public interface SafeRunnable {
+        void run() throws Exception;
+    }
+
+    public static void runSafely(SafeRunnable action) {
         try {
             action.run();
         } catch (AppException e) {
-            LOGGER.log(Level.WARNING, "Errore applicativo: " + e.getMessage());
+            LOGGER.log(Level.WARNING, "Errore applicativo: {0}", e.getMessage());
             System.out.println("ERRORE: " + e.getMessage());
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "Errore imprevisto: " + e.getClass().getSimpleName() + " - " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Errore imprevisto: {0}", e.getClass().getSimpleName());
             System.out.println("ERRORE: Operazione non riuscita.");
         }
     }
