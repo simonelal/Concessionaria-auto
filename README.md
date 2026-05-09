@@ -11,7 +11,8 @@ L'utente può configurare un'auto scegliendo il tipo, aggiungere optional singol
 ```bash
 # Compilare ed eseguire i test
 mvn clean verifygit 
-
+=======
+mvn clean verify
 # Avviare l'applicazione
 mvn exec:java
 ```
@@ -207,4 +208,7 @@ Intercetta tutte le eccezioni prima che raggiungano l'utente. L'utente vede solo
 - Il `Singleton` non è thread-safe: in contesto multi-thread servirebbe inizializzazione eager (`private static final CarCatalog INSTANCE = new CarCatalog()`)
 - Nessun menu interattivo — il flusso è hardcoded in `Main.java`
 - Nessuna interfaccia grafica
+
+- La suite di test copre i casi principali ma non tutti i casi limite
+=======
 - La suite di test copre i casi principali ma non tutti i casi limite
