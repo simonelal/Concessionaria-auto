@@ -136,31 +136,19 @@ ExceptionShield
 
 ### Factory — `CarFactory`
 Centralizza la creazione degli oggetti `Car`. Il chiamante passa solo il tipo e il nome; la logica del prezzo base è incapsulata nella factory.
-
-**Perché Factory e non Abstract Factory?**
-L'Abstract Factory serve quando si devono creare *famiglie* di oggetti correlati (es. auto + motore + interni coordinati tra loro). Qui si crea un solo oggetto, quindi la Factory semplice è sufficiente e meno complessa.
-
-**Perché non costruttore diretto?**
 Se il prezzo base di un SUV cambia, si modifica un solo punto nel codice invece di cercare ogni `new Car(...)` nel progetto.
 
 ---
 
 ### Composite — `OptionComponent`, `OptionLeaf`, `OptionBundle`
 Permette di trattare optional singoli e pacchetti di optional in modo uniforme tramite l'interfaccia `OptionComponent`. `getPrice()` funziona ricorsivamente su tutta la gerarchia.
-
-**Perché Composite e non una lista piatta?**
-Con una lista piatta non si possono avere pacchetti dentro pacchetti. Il Composite supporta strutture ad albero di profondità arbitraria senza che il codice chiamante debba distinguere tra foglie e nodi.
+Il Composite supporta strutture ad albero di profondità arbitraria senza che il codice chiamante debba distinguere tra foglie e nodi.
 
 ---
 
 ### Iterator — `OptionIterator`
 Scorre tutti gli optional dell'auto in profondità (DFS) senza esporre la struttura interna dell'albero. Usa un `ArrayDeque` come stack per gestire la navigazione ricorsiva in modo iterativo.
-
-**Perché DFS e non BFS?**
-Il DFS è più naturale per questa struttura: mostra prima il pacchetto e poi i suoi contenuti, che è l'ordine in cui un cliente pensa agli optional.
-
-**Perché `ArrayDeque` e non `Stack`?**
-`Stack` in Java estende `Vector`, che è sincronizzato — overhead inutile in contesto single-thread. `ArrayDeque` è più moderna ed efficiente.
+Il DFS mostra prima il pacchetto e poi i suoi contenuti, che è l'ordine in cui un cliente pensa agli optional.
 
 ---
 
