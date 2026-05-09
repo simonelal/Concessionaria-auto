@@ -198,5 +198,3 @@ Intercetta tutte le eccezioni prima che raggiungano l'utente. L'utente vede solo
 - Nessuna interfaccia grafica
 
 - La suite di test copre i casi principali ma non tutti i casi limite
-
-- La suite di test copre i casi principali ma non tutti i casi limite
