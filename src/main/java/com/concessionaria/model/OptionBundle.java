@@ -35,11 +35,9 @@ public class OptionBundle implements OptionComponent {
 
     @Override
     public double getPrice() {
-        double total = 0;
-        for (OptionComponent c : children) {
-            total += c.getPrice();
-        }
-        return total;
+        return children.stream()
+            .mapToDouble(OptionComponent::getPrice)
+            .sum();
     }
 
     @Override
@@ -52,9 +50,8 @@ public class OptionBundle implements OptionComponent {
           .append(getPrice())
           .append(")\n");
 
-        for (OptionComponent c : children) {
-            sb.append(c.print(indent + "  "));
-        }
+        children.forEach(c -> sb.append(c.print(indent + "  ")));
+
         return sb.toString();
     }
 }
